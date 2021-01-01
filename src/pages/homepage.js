@@ -21,15 +21,24 @@ const Homepage = () => {
       });
 
     fetch(
-      "https://s3-ap-southeast-1.amazonaws.com/he-public-data/users49b8675.json"
+      "https://jsonplaceholder.typicode.com/todos/1"
     )
       .then((response) => response.json())
       .then((data) => console.log(data));
   }, []);
 
+  const call=()=>{
+    fetch(
+        "https://s3-ap-southeast-1.amazonaws.com/he-public-data/users49b8675.json"
+      )
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+  }
+
   return (
     <div>
       <Navbar />
+        <button onClick={call}>Call</button>
     </div>
   );
 };
