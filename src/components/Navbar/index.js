@@ -8,34 +8,47 @@ import {
   Nav,
   NavItem,
   NavLink,
+  NavbarText,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
 } from "reactstrap";
-
-
-
-const ImpactNavbar = () => {
+import "./index.css";
+const ImpactNavbar = (props) => {
   const [isOpen, navOpen] = useState(false);
 
   const toggle = () => {
     navOpen(!isOpen);
   };
 
+  const handleSearch=(e)=>{
+    props.search(e.target.value);
+  }
+
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Impact</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/pages/shortlisted">Shortlisted</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/pages/shortlisted">Rejected</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+    <Navbar color="light" light expand="md" className="mNav">
+      <NavbarBrand href="/">Impact</NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <NavItem>
+            <NavLink href="/shortlisted">Shortlisted</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/rejected">Rejected</NavLink>
+          </NavItem>
+        </Nav>
+        <NavbarText>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>Search</InputGroupText>
+            </InputGroupAddon>
+            <Input disabled={props.allowed} onChange={handleSearch} placeholder="name" />
+          </InputGroup>
+        </NavbarText>
+      </Collapse>
+    </Navbar>
   );
 };
 

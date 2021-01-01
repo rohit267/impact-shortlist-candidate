@@ -1,0 +1,12 @@
+.candidateImage{
+    max-width: 100%;
+    height: 256px;
+    max-height: 100%;
+}
+.candidateCol{
+    margin-top: 16px;
+    cursor: pointer;
+}
+.candidateButton{
+    margin-left: 10px;
+}
